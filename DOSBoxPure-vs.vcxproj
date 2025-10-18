@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectName>DOSBoxPure</ProjectName>
+    <ZillaLibDir>../ZillaLib</ZillaLibDir>
+    <DBPDir>../dosbox-pure/</DBPDir>
+    <ProjectGuid>{4BD8F2DE-13A1-D8E3-52DC-B32FF52F7483}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugGLCORE|Win32">
+      <Configuration>DebugGLCORE</Configuration>
+      <Platform>Win32</Platform>
+      <ZLOpzimize>No</ZLOpzimize>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseGLCORE|Win32">
+      <Configuration>ReleaseGLCORE</Configuration>
+      <Platform>Win32</Platform>
+      <ZLOpzimize>Yes</ZLOpzimize>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugGLCORE|x64">
+      <Configuration>DebugGLCORE</Configuration>
+      <Platform>x64</Platform>
+      <ZLOpzimize>No</ZLOpzimize>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseGLCORE|x64">
+      <Configuration>ReleaseGLCORE</Configuration>
+      <Platform>x64</Platform>
+      <ZLOpzimize>Yes</ZLOpzimize>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+      <ZLOpzimize>No</ZLOpzimize>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+      <ZLOpzimize>Yes</ZLOpzimize>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+      <ZLOpzimize>No</ZLOpzimize>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+      <ZLOpzimize>Yes</ZLOpzimize>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <Import Project="$(ZillaLibDir)/ZillaApp-vs.props" />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PreprocessorDefinitions>__LIBRETRO__;DBP_STANDALONE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DBPDir);$(DBPDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization Condition="'$(ZLOpzimize)'=='Yes'">false</WholeProgramOptimization>
+    </ClCompile>
+    <ResourceCompile>
+      <Culture>0x009</Culture>
+      <AdditionalIncludeDirectories>$(DBPDir)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp"/>
+    <ClCompile Include="vfs_implementation.cpp" />
+    <ResourceCompile Include="DOSBoxPure.rc" />
+    <ClCompile Include="$(DBPDir)dosbox_pure_libretro.cpp" />
+    <ClCompile Include="$(DBPDir)keyb2joypad.cpp" />
+    <ClInclude Include="$(DBPDir)core_options.h" />
+    <ClInclude Include="$(DBPDir)dosbox_pure_osd.h" />
+    <ClInclude Include="$(DBPDir)dosbox_pure_run.h" />
+    <ClInclude Include="$(DBPDir)dosbox_pure_pad.h" />
+    <ClInclude Include="$(DBPDir)dosbox_pure_sta.h" />
+    <ClInclude Include="$(DBPDir)dosbox_pure_ver.h" />
+    <ClInclude Include="$(DBPDir)include/dbp_serialize.h" />
+    <ClInclude Include="$(DBPDir)libretro-common/include/libretro.h" />
+    <ClCompile Include="$(DBPDir)src\dbp_network.cpp" />
+    <ClCompile Include="$(DBPDir)src\dos\drive_mirror.cpp" />
+    <ClCompile Include="$(DBPDir)src\dos\drive_patch.cpp" />
+    <ClCompile Include="$(DBPDir)src\hardware\ide.cpp" />
+    <ClCompile Include="$(DBPDir)src\hardware\voodoo.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/callback.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_dynrec.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_dyn_x86.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+      <AdditionalOptions Condition="'$(VisualStudioYear)' &gt;= '2017'">/Zc:offsetof- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_full.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_normal.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_prefetch.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_simple.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/cpu.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/flags.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/modrm.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/paging.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dbp_serialize.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dosbox.cpp">
+      <WarningLevel>Level2</WarningLevel>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/cdrom.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/cdrom_image.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_classes.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_devices.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/dos_execute.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_files.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/dos_ioctl.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_keyboard_layout.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_memory.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/dos_misc.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_mscdex.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_programs.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_tables.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drives.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_cache.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_fat.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_iso.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_local.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_memory.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_overlay.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_union.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_virtual.cpp" />
+    <ClCompile Include="$(DBPDir)src/dos/drive_zip.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/fpu/fpu.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/gui/midi.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">Disabled</Optimization>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/gui/render.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/gui/render_scalers.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/adlib.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/cmos.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/dbopl.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/disney.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/dma.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/gameblaster.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/gus.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/hardware.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/iohandler.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/joystick.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/keyboard.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mame/saa1099.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mame/sn76496.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/memory.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mixer.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mpu401.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/nukedopl3.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/pci_bus.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/pcspeaker.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/pic.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/sblaster.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/serialport/serialdummy.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/serialport/serialport.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/tandy_sound.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/timer.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_attr.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_crtc.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_dac.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_draw.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_gfx.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_memory.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_misc.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_other.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_paradise.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_s3.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_seq.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_tseng.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_xga.cpp">
+      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/bios.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/bios_disk.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/bios_keyboard.cpp" />
+    <ClCompile Include="$(DBPDir)src/ints/ems.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_char.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_memory.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_misc.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_modes.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_pal.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_put_pixel.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_vesa.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_video_state.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_vptable.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/mouse.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/xms.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/cross.cpp" />
+    <ClCompile Include="$(DBPDir)src/misc/messages.cpp" />
+    <ClCompile Include="$(DBPDir)src/misc/programs.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/setup.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/support.cpp" />
+    <ClCompile Include="$(DBPDir)src/shell/shell.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/shell/shell_batch.cpp" />
+    <ClCompile Include="$(DBPDir)src/shell/shell_cmds.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/shell/shell_misc.cpp">
+      <WarningLevel>Level2</WarningLevel>
+    </ClCompile>
+    <ClInclude Include="$(DBPDir)include/bios.h" />
+    <ClInclude Include="$(DBPDir)include/bios_disk.h" />
+    <ClInclude Include="$(DBPDir)include/callback.h" />
+    <ClInclude Include="$(DBPDir)include/config.h" />
+    <ClInclude Include="$(DBPDir)include/control.h" />
+    <ClInclude Include="$(DBPDir)include/cpu.h" />
+    <ClInclude Include="$(DBPDir)include/cross.h" />
+    <ClInclude Include="$(DBPDir)include/debug.h" />
+    <ClInclude Include="$(DBPDir)include/dma.h" />
+    <ClInclude Include="$(DBPDir)include/dosbox.h" />
+    <ClInclude Include="$(DBPDir)include/dos_inc.h" />
+    <ClInclude Include="$(DBPDir)include/dos_system.h" />
+    <ClInclude Include="$(DBPDir)include/fpu.h" />
+    <ClInclude Include="$(DBPDir)include/hardware.h" />
+    <ClInclude Include="$(DBPDir)include/inout.h" />
+    <ClInclude Include="$(DBPDir)include/ipx.h" />
+    <ClInclude Include="$(DBPDir)include/ipxserver.h" />
+    <ClInclude Include="$(DBPDir)include/joystick.h" />
+    <ClInclude Include="$(DBPDir)include/keyboard.h" />
+    <ClInclude Include="$(DBPDir)include/logging.h" />
+    <ClInclude Include="$(DBPDir)include/mapper.h" />
+    <ClInclude Include="$(DBPDir)include/mem.h" />
+    <ClInclude Include="$(DBPDir)include/midi.h" />
+    <ClInclude Include="$(DBPDir)include/mixer.h" />
+    <ClInclude Include="$(DBPDir)include/mouse.h" />
+    <ClInclude Include="$(DBPDir)include/paging.h" />
+    <ClInclude Include="$(DBPDir)include/pci_bus.h" />
+    <ClInclude Include="$(DBPDir)include/pic.h" />
+    <ClInclude Include="$(DBPDir)include/programs.h" />
+    <ClInclude Include="$(DBPDir)include/regs.h" />
+    <ClInclude Include="$(DBPDir)include/render.h" />
+    <ClInclude Include="$(DBPDir)include/serialport.h" />
+    <ClInclude Include="$(DBPDir)include/setup.h" />
+    <ClInclude Include="$(DBPDir)include/shell.h" />
+    <ClInclude Include="$(DBPDir)include/support.h" />
+    <ClInclude Include="$(DBPDir)include/timer.h" />
+    <ClInclude Include="$(DBPDir)include/vga.h" />
+    <ClInclude Include="$(DBPDir)include/video.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/decoder.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/dyn_fpu.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/dyn_fpu_dh.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/helpers.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/risc_x64.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/risc_x86.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/string.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/decoder.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/decoder_basic.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/decoder_opcodes.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/dyn_fpu.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/operators.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-common.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-o3.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-thumb-iw.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-thumb-niw.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-thumb.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv8le.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_mipsel32.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_x64.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_x86.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/ea_lookup.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/load.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/loadwrite.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/op.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/optable.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/save.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/string.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/support.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/helpers.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_0f.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_66.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_66_0f.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_none.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/string.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/support.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/table_ea.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/dyn_cache.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/instructions.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/lazyflags.h" />
+    <ClInclude Include="$(DBPDir)src/cpu/modrm.h" />
+    <ClInclude Include="$(DBPDir)src/dos/cdrom.h" />
+    <ClInclude Include="$(DBPDir)src/dos/dev_con.h" />
+    <ClInclude Include="$(DBPDir)src/dos/dos_codepages.h" />
+    <ClInclude Include="$(DBPDir)src/dos/dos_keyboard_layout_data.h" />
+    <ClInclude Include="$(DBPDir)src/dos/drives.h" />
+    <ClInclude Include="$(DBPDir)src/dos/scsidefs.h" />
+    <ClInclude Include="$(DBPDir)src/dos/wnaspi32.h" />
+    <ClInclude Include="$(DBPDir)src/fpu/fpu_instructions.h" />
+    <ClInclude Include="$(DBPDir)src/fpu/fpu_instructions_x86.h" />
+    <ClInclude Include="$(DBPDir)src/gui/midi_mt32.h" />
+    <ClInclude Include="$(DBPDir)src/gui/midi_retro.h" />
+    <ClInclude Include="$(DBPDir)src/gui/midi_tsf.h" />
+    <ClInclude Include="$(DBPDir)src/gui/render_glsl.h" />
+    <ClInclude Include="$(DBPDir)src/gui/render_loops.h" />
+    <ClInclude Include="$(DBPDir)src/gui/render_scalers.h" />
+    <ClInclude Include="$(DBPDir)src/gui/render_simple.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/adlib.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/dbopl.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/mame/emu.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/mame/saa1099.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/mame/sn76496.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/nukedopl3.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/pci_devices.h" />
+    <ClInclude Include="$(DBPDir)src/hardware/serialport/serialdummy.h" />
+    <ClInclude Include="$(DBPDir)src/ints/int10.h" />
+    <ClInclude Include="$(DBPDir)src/ints/xms.h" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="$(DBPDir)src/hardware/adlib.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/bios.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/bios_disk.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/bios_keyboard.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/callback.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/cdrom.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/cdrom_image.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/cmos.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_dyn_x86.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_dynrec.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_full.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_normal.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_prefetch.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/core_simple.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/cpu.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/cross.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/dbopl.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dbp_serialize.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/disney.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/dma.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_classes.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_devices.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_execute.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_files.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_ioctl.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_keyboard_layout.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_memory.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_misc.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_mscdex.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_programs.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/dos_tables.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dosbox.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)dosbox_pure_libretro.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_cache.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_fat.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_iso.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_local.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_memory.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_overlay.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_union.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_virtual.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drive_zip.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/dos/drives.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/ems.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/flags.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/fpu/fpu.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/gameblaster.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/gus.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/hardware.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_char.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_memory.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_misc.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_modes.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_pal.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_put_pixel.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_vesa.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_video_state.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/int10_vptable.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/iohandler.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/joystick.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)keyb2joypad.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/keyboard.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/memory.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/messages.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/gui/midi.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mixer.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/modrm.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/mouse.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mpu401.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/nukedopl3.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/cpu/paging.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/pci_bus.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/pcspeaker.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/pic.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/programs.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/gui/render.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/gui/render_scalers.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mame/saa1099.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/sblaster.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/serialport/serialdummy.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/serialport/serialport.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/setup.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/shell/shell.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/shell/shell_batch.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/shell/shell_cmds.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/shell/shell_misc.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/mame/sn76496.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/misc/support.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/tandy_sound.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/timer.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_attr.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_crtc.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_dac.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_draw.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_gfx.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_memory.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_misc.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_other.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_paradise.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_s3.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_seq.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_tseng.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/hardware/vga_xga.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src/ints/xms.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="vfs_implementation.cpp" />
+    <ClCompile Include="$(DBPDir)src\hardware\ide.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src\hardware\voodoo.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src\dos\drive_patch.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src\dos\drive_mirror.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+    <ClCompile Include="$(DBPDir)src\dbp_network.cpp">
+      <Filter>DOSBox</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(DBPDir)src/hardware/adlib.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/bios.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/bios_disk.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/callback.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/dos/cdrom.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/config.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/control.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)core_options.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/cpu.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/cross.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/hardware/dbopl.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/dbp_serialize.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/debug.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/decoder.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/decoder.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/decoder_basic.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/decoder_opcodes.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/dos/dev_con.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/dma.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/dos/dos_codepages.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/dos_inc.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/dos/dos_keyboard_layout_data.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/dos_system.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/dosbox.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/dos/drives.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/dyn_cache.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/dyn_fpu.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/dyn_fpu.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/dyn_fpu_dh.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/ea_lookup.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/hardware/mame/emu.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/fpu.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/fpu/fpu_instructions.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/fpu/fpu_instructions_x86.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/hardware.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/helpers.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/helpers.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/inout.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/instructions.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/ints/int10.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/ipx.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/ipxserver.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/joystick.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/keyboard.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/lazyflags.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)libretro-common/include/libretro.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/load.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/loadwrite.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/logging.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/mapper.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/mem.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/midi.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/gui/midi_mt32.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/gui/midi_retro.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/gui/midi_tsf.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/mixer.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/modrm.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/mouse.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/hardware/nukedopl3.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/op.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/operators.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/optable.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/paging.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/pci_bus.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/hardware/pci_devices.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/pic.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_0f.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_66.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_66_0f.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/prefix_none.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/programs.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/regs.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/render.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/gui/render_glsl.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/gui/render_loops.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/gui/render_scalers.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/gui/render_simple.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-common.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-o3.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-thumb.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-thumb-iw.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv4le-thumb-niw.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_armv8le.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_mipsel32.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/risc_x64.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_x64.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dynrec/risc_x86.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/risc_x86.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/hardware/mame/saa1099.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/save.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/dos/scsidefs.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/hardware/serialport/serialdummy.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/serialport.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/setup.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/shell.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/hardware/mame/sn76496.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_dyn_x86/string.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/string.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/string.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/support.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/support.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_full/support.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/cpu/core_normal/table_ea.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/timer.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/vga.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)include/video.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/dos/wnaspi32.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)src/ints/xms.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)dosbox_pure_run.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="$(DBPDir)dosbox_pure_osd.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dosbox-pure\dosbox_pure_pad.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dosbox-pure\dosbox_pure_sta.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dosbox-pure\dosbox_pure_ver.h">
+      <Filter>DOSBox</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="DOSBox">
+      <UniqueIdentifier>{3929de12-f521-4aca-8f58-9c8f390dcafa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DOSBoxPure.rc" />
+  </ItemGroup>
+</Project>

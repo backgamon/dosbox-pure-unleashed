@@ -1,0 +1,28 @@
+#include <windows.h>
+#include <dosbox_pure_ver.h>
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+ZL ICON "DOSBoxPure.ico"
+1 VERSIONINFO
+	FILEVERSION     1,0,0,0
+	PRODUCTVERSION  1,0,0,0
+	FILEOS          VOS_NT_WINDOWS32
+	FILETYPE        VFT_APP
+{
+	BLOCK "StringFileInfo"
+	{
+		BLOCK "040904b0"
+		{
+			VALUE "FileDescription", "DOSBoxPure"
+			VALUE "FileVersion", DOSBOX_PURE_VERSION_STR
+			VALUE "ProductName", "DOSBoxPure"
+			VALUE "ProductVersion", DOSBOX_PURE_VERSION_STR
+			VALUE "InternalName", "DOSBoxPure"
+			VALUE "OriginalFilename", "DOSBoxPure.exe"
+			VALUE "LegalCopyright", "2025"
+		}
+	}
+	BLOCK "VarFileInfo"
+	{
+		VALUE "Translation", 0x009, 1252
+	}
+}
