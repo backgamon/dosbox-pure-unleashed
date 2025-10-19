@@ -51,7 +51,7 @@ endif
 
 $(MACOS_OUTDIR)/$(MACOS_APPIZP): $(MACOS_OUTDIR)/DOSBoxPure_$(CPUTYPE) DOSBoxPure-MacOSAppBase
 	@unzip -oq DOSBoxPure-MacOSAppBase
-	@cp $(MACOS_OUTDIR)/DOSBoxPure_$(CPUTYPE) DOSBoxPure.app/Contents/MacOS/DOSBoxPure
+	@cp -a $(MACOS_OUTDIR)/DOSBoxPure_$(CPUTYPE) DOSBoxPure.app/Contents/MacOS/DOSBoxPure
 	@touch DOSBoxPure.app DOSBoxPure.app/Contents DOSBoxPure.app/Contents/* DOSBoxPure.app/Contents/MacOS/DOSBoxPure DOSBoxPure.app/Contents/Resources/*
 	perl -i -pe "s/1.0.0/$(DBPVER)/g" DOSBoxPure.app/Contents/Info.plist
 	zip -r $(MACOS_OUTDIR)/$(MACOS_APPIZP) DOSBoxPure.app
