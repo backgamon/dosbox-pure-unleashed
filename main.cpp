@@ -364,7 +364,6 @@ static std::vector<ZL_JoystickData*> vecJoys;
 
 extern "C" { unsigned int SDL_GetTicks(void); }
 extern "C" { int SDL_ShowCursor(int toggle); }
-extern "C" { unsigned int SDL_GetMouseState(int *x, int *y); }
 extern "C" { struct SDL_Window* SDL_GetMouseFocus(void); }
 extern "C" { void* SDL_GL_GetProcAddress(const char *proc); } 
 extern "C" { unsigned long SDL_GetThreadID(struct SDL_Thread* = NULL); }
@@ -1136,8 +1135,8 @@ bool DBPS_GetJoyBind(unsigned port, unsigned device, unsigned index, unsigned id
 
 void DBPS_GetMouse(short& mx, short& my, bool osd)
 {
-	int x, y; // SDL_GetMouseState unlikely to give lower latency than just using ZL_Input::Pointer() but maybe we're lucky
-	const ZL_Vector p = ((PointerLock && !DBPS_IsShowingOSD()) ? PointerLockPos : (SDL_GetMouseFocus() ? (SDL_GetMouseState(&x, &y),ZLV(x, ZL_Display::Height - 1 - y)) : ZLCENTER));
+	extern ZL_Vector ZL_SdlQueryMousePos();
+	const ZL_Vector p = ((PointerLock && !DBPS_IsShowingOSD()) ? PointerLockPos : (SDL_GetMouseFocus() ? ZL_SdlQueryMousePos() : ZLCENTER));
 	const ZL_Rectf& rec = (osd ? osd_rec : core_rec);
 	mx = ((p.x <= rec.left) ? (int16_t)-0x7fff : ((p.x >= rec.right) ? (int16_t)0x7fff : (int16_t)((p.x - rec.left) / rec.Width() * 65534.99f - 32767.495f)));
 	my = ((p.y <= rec.low)  ? (int16_t)0x7fff : ((p.y >= rec.high)  ? (int16_t)-0x7fff : (int16_t)((p.y - rec.low) / rec.Height() * -65534.99f - 32767.495f)));

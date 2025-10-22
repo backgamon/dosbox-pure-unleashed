@@ -674,13 +674,13 @@
     <ClInclude Include="$(DBPDir)dosbox_pure_osd.h">
       <Filter>DOSBox</Filter>
     </ClInclude>
-    <ClInclude Include="..\dosbox-pure\dosbox_pure_pad.h">
+    <ClInclude Include="$(DBPDir)dosbox_pure_pad.h">
       <Filter>DOSBox</Filter>
     </ClInclude>
-    <ClInclude Include="..\dosbox-pure\dosbox_pure_sta.h">
+    <ClInclude Include="$(DBPDir)dosbox_pure_sta.h">
       <Filter>DOSBox</Filter>
     </ClInclude>
-    <ClInclude Include="..\dosbox-pure\dosbox_pure_ver.h">
+    <ClInclude Include="$(DBPDir)dosbox_pure_ver.h">
       <Filter>DOSBox</Filter>
     </ClInclude>
   </ItemGroup>
