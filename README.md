@@ -164,6 +164,11 @@ There are two core options related to this feature:
 The operating system will detect a NE2000 networking card which will not be able to connect to the real internet.  
 To avoid slow boot times, make sure to configure it to use base address port set to 0x300 and base IRQ set to 10.
 
+In Windows 95 or 98, the keyboard gets detected as "PC/AT Keyboard (84-Key)" which can lead to some issues with arrow
+keys and others. To fix it open the "Device Manager", go to the keyboard and run "Update Driver". Then by using
+"Display a list of all the drivers" and "Show all hardware" you can find and install the full keyboard driver
+"Standard 101/102-Key or Microsoft Natural Keyboard" which is compatible. Make sure to reboot after installing it.
+
 It is also possible to create save states while running an installed operating system. This can be used
 to skip the startup sequence or even jump directly to the title screen of a game. Make sure to load the
 same operating system and do not modify the loaded ZIP file in any way otherwise the operating system
