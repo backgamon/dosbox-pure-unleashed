@@ -85,7 +85,7 @@ jobs:
     - name: Build
       if: ${{ github.event.inputs.versionstring == '' }}
       run: |
-        sudo apt install -y libgl1-mesa-dev libasound2-dev libxxf86vm-dev libxrandr-dev
+        sudo apt install -y libgl1-mesa-dev libasound2-dev libpulse-dev libxxf86vm-dev libxrandr-dev
         cd main
         make linux-release -j4 ZL_VIDEO_OPENGL_CORE=1
         cp Release-linux/DOSBoxPure_x86_64 Release-linux/DOSBoxPure
@@ -98,7 +98,7 @@ jobs:
         options: -v ${{ github.workspace }}:/work
         run: |
           sudo apt-get update
-          sudo apt-get -y install git make g++ libgl1-mesa-dev libasound2-dev libxxf86vm-dev libxrandr-dev
+          sudo apt-get -y install git make g++ libgl1-mesa-dev libasound2-dev libpulse-dev libxxf86vm-dev libxrandr-dev
           cd /work/main
           make linux-release -j4 ZL_VIDEO_OPENGL_CORE=1
           cp Release-linux/DOSBoxPure_x86_64 Release-linux/DOSBoxPure
@@ -135,7 +135,7 @@ jobs:
     - name: Build
       if: ${{ github.event.inputs.versionstring == '' }}
       run: |
-        sudo apt install -y libgl1-mesa-dev libasound2-dev libxxf86vm-dev libxrandr-dev
+        sudo apt install -y libgl1-mesa-dev libasound2-dev libpulse-dev libxxf86vm-dev libxrandr-dev
         cd main
         make linux-release -j4 ZL_VIDEO_OPENGL_ES2=1
         cp Release-linux/DOSBoxPure_arm_64 Release-linux/DOSBoxPure
@@ -143,7 +143,7 @@ jobs:
     - name: Build for release
       if: ${{ github.event.inputs.versionstring != '' }}
       run: | # arm runner somehow can't use older distro via docker like the x64 runner can, so run on current distro
-        sudo apt install -y libgl1-mesa-dev libasound2-dev libxxf86vm-dev libxrandr-dev
+        sudo apt install -y libgl1-mesa-dev libasound2-dev libpulse-dev libxxf86vm-dev libxrandr-dev
         cd main
         make linux-release -j4 ZL_VIDEO_OPENGL_CORE=1
         cp Release-linux/DOSBoxPure_arm_64 Release-linux/DOSBoxPure
