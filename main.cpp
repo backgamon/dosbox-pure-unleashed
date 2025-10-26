@@ -49,7 +49,7 @@ enum EHotkeyFKeys
 };
 static unsigned short HotkeyMod;
 static unsigned char ThrottleMode, LastAudioThrottleMode;
-static bool ThrottlePaused, SpeedModHold, DisableSystemALT, UseMiddleMouseMenu, PointerLock;
+static bool ThrottlePaused, SpeedModHold, DisableSystemALT, UseMiddleMouseMenu, PointerLock, DrawStretched;
 static bool DrawCoreShader, DoApplyInterfaceOptions, DoApplyGeometry, DoSave, DoLoad, AudioSkip;
 static char Scaling;
 static int CRTFilter, AudioLatency;
@@ -806,7 +806,7 @@ static bool RETRO_CALLCONV retro_environment_cb(unsigned cmd, void *data)
 			else ZL_Application::SettingsSet(((retro_variable*)data)->key, ((retro_variable*)data)->value);
 			DirtySettings();
 			variables_updated = true;
-			if (((retro_variable*)data)->key[0] == 'i') DoApplyInterfaceOptions = true;
+			if (((retro_variable*)data)->key[0] == 'i' || !strcmp(((retro_variable*)data)->key, "dosbox_pure_aspect_correction")) DoApplyInterfaceOptions = true;
 			mtxCoreOptions.Unlock();
 			return true;
 		}
@@ -1290,6 +1290,7 @@ static void ApplyGeometry()
 {
 	DoApplyGeometry = false;
 	float core_ar = av.geometry.aspect_ratio, win_w = ZLWIDTH, win_h = ZL_Math::Max(ZLHEIGHT, 1.0f), win_ar = win_w / win_h, osd_w = DBPS_OSD_WIDTH, osd_h = DBPS_OSD_HEIGHT, osd_ar = osd_w / osd_h;
+	if (DrawStretched) core_ar = win_ar;
 
 	if (Scaling == 'I')
 	{
@@ -1535,6 +1536,7 @@ static void ApplyInterfaceOptions()
 	const float newSlowRate = (ZL_Application::SettingsHas("interface_slowrate") ? ZL_Math::Min((float)atof(ZL_Application::SettingsGet("interface_slowrate").c_str()), 0.999f) : 0.3f);
 	DisableSystemALT = ((ZL_Application::SettingsGet("interface_systemhotkeys").c_str()[0]|0x20) == 'f');
 	UseMiddleMouseMenu = ((ZL_Application::SettingsGet("interface_middlemouse").c_str()[0]|0x20) == 't');
+	DrawStretched = !strcmp(ZL_Application::SettingsGet("dosbox_pure_aspect_correction").c_str(), "fill");
 	Scaling = (ZL_Application::SettingsGet("interface_scaling").c_str()[0]&0x5f);
 	CRTFilter = atoi(ZL_Application::SettingsGet("interface_crtfilter").c_str());
 	const int audlatency = (ZL_Application::SettingsHas("interface_audiolatency" ) ? ZL_Math::Max(atoi(ZL_Application::SettingsGet("interface_audiolatency").c_str()), 5) : 25);
