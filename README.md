@@ -17,7 +17,7 @@ or the Sponsor button at the top of the [GitHub repository](https://github.com/s
 Thank you for your consideration!
 
 ## Loading Content
-DOSBox Pure can load ZIP files, CD images (ISO or CUE), floppy/hard disk images (IMG/IMA/VHD/JRC/TC), DOS executable files (EXE/BAT/COM),
+DOSBox Pure can load ZIP files, CD images (ISO or CUE), floppy/hard disk images (IMG/IMA/VHD/JRC), DOS executable files (EXE/BAT/COM),
 legacy DOSBox .conf files or folders directly. It also loads .DOSZ files which are just .ZIP files with a different extension.
 
 There are 3 ways to load content. After startup, you can use the "Load Content" menu option to navigate to the file you want to load.
@@ -52,7 +52,7 @@ Changes made to a loaded ZIP file will be stored as a separate ZIP file into the
 If a game is loaded directly without using a container like ZIP or ISO the saves directory is not used.
 
 ### Mount Disk Images from Inside ZIP Files
-CD images (ISO or CUE) and floppy disk images (IMG/IMA/VHD/JRC/TC) can be mounted directly from inside ZIP files.  
+CD images (ISO or CUE) and floppy disk images (IMG/IMA/VHD/JRC) can be mounted directly from inside ZIP files.  
 The system will automatically mount the first found disk image as the A: or D: drive.  
 Additional disks can be loaded or swapped by using the [start menu](#start-menu).
 
