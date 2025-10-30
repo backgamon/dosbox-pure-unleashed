@@ -50,7 +50,7 @@ enum EHotkeyFKeys
 static unsigned short HotkeyMod;
 static unsigned char ThrottleMode, LastAudioThrottleMode;
 static bool ThrottlePaused, SpeedModHold, DisableSystemALT, UseMiddleMouseMenu, PointerLock, DrawStretched;
-static bool DrawCoreShader, DoApplyInterfaceOptions, DoApplyGeometry, DoSave, DoLoad, AudioSkip;
+static bool DrawCoreShader, DoApplyInterfaceOptions, DoApplyGeometry, DoSave, DoLoad, AudioSkip, DefaultPointerLock;
 static char Scaling;
 static int CRTFilter, AudioLatency;
 static float FastRate = 5.0f, SlowRate = 0.3f;
@@ -1202,7 +1202,7 @@ static bool OnKeyUseHotKey(ZL_KeyboardEvent& e)
 		case (HOTKEY_F_QUICKSAVE-1):   if (e.is_down) RunSave(); return true;
 		case (HOTKEY_F_QUICKLOAD-1):   if (e.is_down) RunLoad(); return true;
 		case (HOTKEY_F_FULLSCREEN-1):  if (e.is_down) ZL_Display::ToggleFullscreen(); return true;
-		case (HOTKEY_F_LOCKMOUSE-1):   if (e.is_down) { PointerLock ^= true; PointerLockPos = ZL_Input::Pointer(); vecNotify.push_back({ ZL_TextBuffer(fntOSD, (PointerLock ? "Locked mouse pointer" : "Unlocked mouse pointer")), 500, RETRO_LOG_INFO, ZLTICKS, 0.0f }); } return true;
+		case (HOTKEY_F_LOCKMOUSE-1):   if (e.is_down) { PointerLock ^= true; vecNotify.push_back({ ZL_TextBuffer(fntOSD, (PointerLock ? "Locked mouse pointer" : "Unlocked mouse pointer")), 500, RETRO_LOG_INFO, ZLTICKS, 0.0f }); } return true;
 		case (HOTKEY_F_PAUSE-1):
 			if (!e.is_down) return true;
 			if (ThrottleMode == RETRO_THROTTLE_FRAME_STEPPING) ApplyFPSLimit(RETRO_THROTTLE_NONE, true);
@@ -1534,6 +1534,7 @@ static void ApplyInterfaceOptions()
 	SpeedModHold = ((ZL_Application::SettingsGet("interface_speedtoggle").c_str()[0]|0x20) == 'h');
 	const float newFastRate = (ZL_Application::SettingsHas("interface_fastrate") ? ZL_Math::Max((float)atof(ZL_Application::SettingsGet("interface_fastrate").c_str()), 1.001f) : 5.0f);
 	const float newSlowRate = (ZL_Application::SettingsHas("interface_slowrate") ? ZL_Math::Min((float)atof(ZL_Application::SettingsGet("interface_slowrate").c_str()), 0.999f) : 0.3f);
+	const bool defaultPointerLock = ((ZL_Application::SettingsGet("interface_lockmouse").c_str()[0]|0x20) == 't');
 	DisableSystemALT = ((ZL_Application::SettingsGet("interface_systemhotkeys").c_str()[0]|0x20) == 'f');
 	UseMiddleMouseMenu = ((ZL_Application::SettingsGet("interface_middlemouse").c_str()[0]|0x20) == 't');
 	DrawStretched = !strcmp(ZL_Application::SettingsGet("dosbox_pure_aspect_correction").c_str(), "fill");
@@ -1575,6 +1576,12 @@ static void ApplyInterfaceOptions()
 		AudioSkip = true;
 		AudioLatency = audlatency;
 		ZL_Audio::Init(audlatency * 44100 / 1000);
+	}
+
+	if (defaultPointerLock != DefaultPointerLock)
+	{
+		if (DefaultPointerLock == PointerLock) { PointerLock ^= true; vecNotify.push_back({ ZL_TextBuffer(fntOSD, (PointerLock ? "Locked mouse pointer" : "Unlocked mouse pointer")), 500, RETRO_LOG_INFO, ZLTICKS, 0.0f }); }
+		DefaultPointerLock = defaultPointerLock;
 	}
 
 	ApplyGeometry(); // apply int scaling, shader use, texture scaling mode
@@ -1633,7 +1640,7 @@ static void OnDraw()
 	static bool doPointerLock, doHideCursor, lastHiddenCursor;
 	if (PointerLock && !showOSD)
 	{
-		if (!doPointerLock) ZL_Display::SetPointerLock((doPointerLock = true));
+		if (!doPointerLock) { ZL_Display::SetPointerLock((doPointerLock = true)); PointerLockPos = ZL_Input::Pointer(); }
 		PointerLockPos = (showOSD ? osd_rec : core_rec).Clamp(PointerLockPos + ZL_Input::MouseDelta());
 	}
 	else
@@ -1894,6 +1901,7 @@ static struct sDOSBoxPure : public ZL_Application
 		if (ZL_Application::SettingsHas("interface_contentpath"))
 			DBPS_BrowsePath.assign(ZL_Application::SettingsGet("interface_contentpath"));
 
+		DefaultPointerLock = PointerLock = ((ZL_Application::SettingsGet("interface_lockmouse").c_str()[0]|0x20) == 't');
 		AudioLatency = (ZL_Application::SettingsHas("interface_audiolatency") ? ZL_Math::Max(atoi(ZL_Application::SettingsGet("interface_audiolatency").c_str()), 5) : 25);
 		ZL_Audio::Init(AudioLatency * 44100 / 1000);
 		ZL_Audio::HookAudioMix(AudioMix);
