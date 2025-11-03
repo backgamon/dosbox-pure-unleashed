@@ -899,6 +899,9 @@ static bool RETRO_CALLCONV retro_environment_cb(unsigned cmd, void *data)
 			else { ZL_ASSERT(0); }
 			return true;
 		}
+		case RETRO_ENVIRONMENT_SHUTDOWN:
+			ZL_Application::Quit();
+			return true;
 	}
 	ZL_ASSERTMSG1(false, "[retro_environment_cb] UNSUPPORTED CMD: %d", cmd);
 	return false;
