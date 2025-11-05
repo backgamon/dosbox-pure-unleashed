@@ -10,6 +10,10 @@ You can download the latest version of DOSBox Pure on [itch.io](https://schellin
 
 Just extract the ZIP file and then run DOSBoxPure.exe.
 
+On macOS if you get an error that the program is damaged or otherwise can't be run, you need to open the Terminal app and execute this command to allow it to be executed:
+```sh
+xattr -dr com.apple.quarantine /Applications/DOSBoxPure.app
+```
 ### Donations
 Tips and donations are welcome, either through the [itch.io page](https://schelling.itch.io/dosbox-pure)
 or the Sponsor button at the top of the [GitHub repository](https://github.com/schellingb/dosbox-pure-unleashed).
