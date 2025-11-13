@@ -10,6 +10,10 @@ You can download the latest version of DOSBox Pure on [itch.io](https://schellin
 
 Just extract the ZIP file and then run DOSBoxPure.exe.
 
+On macOS if you get an error that the program is damaged or otherwise can't be run, you need to open the Terminal app and execute this command to allow it to be executed:
+```sh
+xattr -dr com.apple.quarantine /Applications/DOSBoxPure.app
+```
 ### Donations
 Tips and donations are welcome, either through the [itch.io page](https://schelling.itch.io/dosbox-pure)
 or the Sponsor button at the top of the [GitHub repository](https://github.com/schellingb/dosbox-pure-unleashed).
@@ -17,7 +21,7 @@ or the Sponsor button at the top of the [GitHub repository](https://github.com/s
 Thank you for your consideration!
 
 ## Loading Content
-DOSBox Pure can load ZIP files, CD images (ISO or CUE), floppy/hard disk images (IMG/IMA/VHD/JRC/TC), DOS executable files (EXE/BAT/COM),
+DOSBox Pure can load ZIP files, CD images (ISO or CUE), floppy/hard disk images (IMG/IMA/VHD/JRC), DOS executable files (EXE/BAT/COM),
 legacy DOSBox .conf files or folders directly. It also loads .DOSZ files which are just .ZIP files with a different extension.
 
 There are 3 ways to load content. After startup, you can use the "Load Content" menu option to navigate to the file you want to load.
@@ -52,7 +56,7 @@ Changes made to a loaded ZIP file will be stored as a separate ZIP file into the
 If a game is loaded directly without using a container like ZIP or ISO the saves directory is not used.
 
 ### Mount Disk Images from Inside ZIP Files
-CD images (ISO or CUE) and floppy disk images (IMG/IMA/VHD/JRC/TC) can be mounted directly from inside ZIP files.  
+CD images (ISO or CUE) and floppy disk images (IMG/IMA/VHD/JRC) can be mounted directly from inside ZIP files.  
 The system will automatically mount the first found disk image as the A: or D: drive.  
 Additional disks can be loaded or swapped by using the [start menu](#start-menu).
 
@@ -163,6 +167,11 @@ There are two core options related to this feature:
 
 The operating system will detect a NE2000 networking card which will not be able to connect to the real internet.  
 To avoid slow boot times, make sure to configure it to use base address port set to 0x300 and base IRQ set to 10.
+
+In Windows 95 or 98, the keyboard gets detected as "PC/AT Keyboard (84-Key)" which can lead to some issues with arrow
+keys and others. To fix it open the "Device Manager", go to the keyboard and run "Update Driver". Then by using
+"Display a list of all the drivers" and "Show all hardware" you can find and install the full keyboard driver
+"Standard 101/102-Key or Microsoft Natural Keyboard" which is compatible. Make sure to reboot after installing it.
 
 It is also possible to create save states while running an installed operating system. This can be used
 to skip the startup sequence or even jump directly to the title screen of a game. Make sure to load the

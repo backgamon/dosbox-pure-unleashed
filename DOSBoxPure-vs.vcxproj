@@ -5,47 +5,41 @@
     <ZillaLibDir>../ZillaLib</ZillaLibDir>
     <DBPDir>../dosbox-pure/</DBPDir>
     <ProjectGuid>{4BD8F2DE-13A1-D8E3-52DC-B32FF52F7483}</ProjectGuid>
+    <DBPOptimize Condition="'$(Configuration)'=='Debug' or '$(Configuration)'=='DebugGLCORE'">No</DBPOptimize>
+    <DBPOptimize Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='ReleaseGLCORE'">Yes</DBPOptimize>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="DebugGLCORE|Win32">
       <Configuration>DebugGLCORE</Configuration>
       <Platform>Win32</Platform>
-      <ZLOpzimize>No</ZLOpzimize>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseGLCORE|Win32">
       <Configuration>ReleaseGLCORE</Configuration>
       <Platform>Win32</Platform>
-      <ZLOpzimize>Yes</ZLOpzimize>
     </ProjectConfiguration>
     <ProjectConfiguration Include="DebugGLCORE|x64">
       <Configuration>DebugGLCORE</Configuration>
       <Platform>x64</Platform>
-      <ZLOpzimize>No</ZLOpzimize>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseGLCORE|x64">
       <Configuration>ReleaseGLCORE</Configuration>
       <Platform>x64</Platform>
-      <ZLOpzimize>Yes</ZLOpzimize>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
-      <ZLOpzimize>No</ZLOpzimize>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
-      <ZLOpzimize>Yes</ZLOpzimize>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
-      <ZLOpzimize>No</ZLOpzimize>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
-      <ZLOpzimize>Yes</ZLOpzimize>
     </ProjectConfiguration>
   </ItemGroup>
   <Import Project="$(ZillaLibDir)/ZillaApp-vs.props" />
@@ -54,7 +48,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PreprocessorDefinitions>__LIBRETRO__;DBP_STANDALONE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(DBPDir);$(DBPDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization Condition="'$(ZLOpzimize)'=='Yes'">false</WholeProgramOptimization>
+      <WholeProgramOptimization Condition="'$(DBPOptimize)'=='Yes'">false</WholeProgramOptimization>
     </ClCompile>
     <ResourceCompile>
       <Culture>0x009</Culture>
@@ -80,73 +74,74 @@
     <ClCompile Include="$(DBPDir)src\dos\drive_patch.cpp" />
     <ClCompile Include="$(DBPDir)src\hardware\ide.cpp" />
     <ClCompile Include="$(DBPDir)src\hardware\voodoo.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/callback.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/core_dynrec.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/core_dyn_x86.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
       <AdditionalOptions Condition="'$(VisualStudioYear)' &gt;= '2017'">/Zc:offsetof- %(AdditionalOptions)</AdditionalOptions>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/core_full.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/core_normal.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
       <ExceptionHandling>Sync</ExceptionHandling>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/core_prefetch.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
       <ExceptionHandling>Sync</ExceptionHandling>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/core_simple.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
       <ExceptionHandling>Sync</ExceptionHandling>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/cpu.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/flags.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/modrm.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/cpu/paging.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
       <ExceptionHandling>Sync</ExceptionHandling>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/dbp_serialize.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/dosbox.cpp">
       <WarningLevel>Level2</WarningLevel>
@@ -198,213 +193,213 @@
     <ClCompile Include="$(DBPDir)src/dos/drive_union.cpp" />
     <ClCompile Include="$(DBPDir)src/dos/drive_virtual.cpp" />
     <ClCompile Include="$(DBPDir)src/dos/drive_zip.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/fpu/fpu.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/gui/midi.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">Disabled</Optimization>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">Disabled</Optimization>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/gui/render.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/gui/render_scalers.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/adlib.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/cmos.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/dbopl.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/disney.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/dma.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/gameblaster.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/gus.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/hardware.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/iohandler.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/joystick.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/keyboard.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/mame/saa1099.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/mame/sn76496.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/memory.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/mixer.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/mpu401.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/nukedopl3.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/pci_bus.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/pcspeaker.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/pic.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/sblaster.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/serialport/serialdummy.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/serialport/serialport.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/tandy_sound.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/timer.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_attr.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_crtc.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_dac.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_draw.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_gfx.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_memory.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_misc.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_other.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_paradise.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_s3.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_seq.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_tseng.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/hardware/vga_xga.cpp">
-      <Optimization Condition="'$(ZLOpzimize)'=='No'">MaxSpeed</Optimization>
-      <BasicRuntimeChecks Condition="'$(ZLOpzimize)'=='No'">Default</BasicRuntimeChecks>
+      <Optimization Condition="'$(DBPOptimize)'=='No'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(DBPOptimize)'=='No'">Default</BasicRuntimeChecks>
       <WarningLevel>Level2</WarningLevel>
     </ClCompile>
     <ClCompile Include="$(DBPDir)src/ints/bios.cpp">
